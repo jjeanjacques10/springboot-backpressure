@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: pokemon-center
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
+    url: jdbc:mysql://localhost:3306/pokemon_database?useSSL=false
+  jpa:
+    defer-datasource-initialization: true
+    properties.hibernate.format_sql: true
+    generate-ddl: true
+    hibernate.ddl.auto: create
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+cloud:
+  aws:
+    accessKey: admin
+    secretKey: admin
+    stack:
+      auto: false
+      enabled: false
+    region:
+      static: us-west-1
+    sqs:
+      url: http://localhost:4576

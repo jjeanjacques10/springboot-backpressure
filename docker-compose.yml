@@ -1,0 +1,48 @@
+version: '3.1'
+services:
+  database-pokemon:
+    container_name: database-pokemon
+    image: mysql:5.7
+    restart: always
+    networks:
+      - pokemon-network
+    environment:
+      MYSQL_DATABASE: 'pokemon_database'
+      MYSQL_USER: 'pokemon_user'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db-center:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '9080:8080'
+    networks:
+      - pokemon-network
+  sqs:
+    container_name: sqs
+    image: localstack/localstack:latest
+    restart: always
+    networks:
+      - pokemon-network
+    environment:
+      - AWS_DEFAULT_REGION=us-west-1
+      - EDGE_PORT=4576
+      - SERVICES=sqs
+      - HOSTNAME=localhost
+      - HOSTNAME_EXTERNAL=sqs-local # change to "localhost" when running without docker
+    ports:
+      - '4576:4576'
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./environment/:/docker-entrypoint-initaws.d/
+
+volumes:
+  my-db-center:
+
+networks:
+  pokemon-network:
