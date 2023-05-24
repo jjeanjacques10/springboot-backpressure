@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 services:
   database-pokemon:
     container_name: database-pokemon
@@ -24,7 +24,7 @@ services:
       - pokemon-network
   sqs:
     container_name: sqs
-    image: localstack/localstack:latest
+    image: localstack/localstack
     restart: always
     networks:
       - pokemon-network
@@ -33,13 +33,13 @@ services:
       - EDGE_PORT=4576
       - SERVICES=sqs
       - HOSTNAME=localhost
-      - HOSTNAME_EXTERNAL=sqs-local # change to "localhost" when running without docker
+      - HOSTNAME_EXTERNAL=localhost # change to "localhost" when running without docker
     ports:
       - '4576:4576'
     volumes:
       - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - ./environment/:/docker-entrypoint-initaws.d/
+      - "./environment/create-queues.sh:/etc/localstack/init/ready.d/init-aws.sh"
 
 volumes:
   my-db-center:
