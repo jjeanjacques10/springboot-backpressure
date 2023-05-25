@@ -7,8 +7,9 @@ class Pokemon {
     lateinit var type: Type
     var hp: Int = 0
     var level: Int = 0
+    var master: String? = null
 
     override fun toString(): String {
-        return "(name: ${this.name}, type: ${this.type}, hp: ${this.hp}, level: ${this.level}"
+        return "(name: ${this.name}, type: ${this.type}, hp: ${this.hp}, level: ${this.level}, master: ${this.master}"
     }
 }
