@@ -10,6 +10,6 @@ class Pokemon {
     var master: String? = null
 
     override fun toString(): String {
-        return "(name: ${this.name}, type: ${this.type}, hp: ${this.hp}, level: ${this.level}, master: ${this.master}"
+        return "(name: ${this.name}, type: ${this.type}, hp: ${this.hp}, level: ${this.level}, master: ${this.master})"
     }
 }

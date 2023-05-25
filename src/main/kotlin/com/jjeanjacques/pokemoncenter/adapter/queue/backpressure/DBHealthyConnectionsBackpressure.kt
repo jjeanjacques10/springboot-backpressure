@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service
 import java.sql.SQLException
 import javax.sql.DataSource
 
-@Primary
 @Service("connections_backpressure")
 class DBHealthyConnectionsBackpressure(
         private val healthIndicator: DataSourceHealthIndicator,

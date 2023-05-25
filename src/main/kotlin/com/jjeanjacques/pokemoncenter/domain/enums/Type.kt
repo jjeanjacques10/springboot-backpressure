@@ -6,5 +6,6 @@ enum class Type {
     ROCK,
     NORMAL,
     FIRE,
-    WATER
+    WATER,
+    GRASS
 }

@@ -21,6 +21,7 @@ class PokemonServiceImpl(val pokemonRepository: PokemonRepository) : PokemonServ
             NORMAL -> "Rejuvenating Normal Pokémon with Tranquil Harmony"
             FIRE -> "Curing Fire Pokémon with an Intense Inferno Bath"
             WATER -> "Healing Water Pokémon with the Soothing Ocean Waves"
+            GRASS -> "Nurturing Grass Pokémon with the Power of Nature"
         }
         log.info("$process - $pokemon")
         registerPokemon(pokemon)

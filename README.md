@@ -14,15 +14,30 @@ Demo project for Spring Boot using Backpressure with MySQL.
 
 - [DBHealthyBackpressure.kt](./src/main/kotlin/com/jjeanjacques/pokemoncenter/adapter/queue/backpressure/DBHealthyBackpressure.kt)
 
-Check the database health (status). Such as "UP", "DOWN" or "OUT_OF_SERVICE".
+This backpressure implementation checks the health status of the database. Such as "UP", "DOWN" or "OUT_OF_SERVICE".
 
 - [DBHealthyConnectionsBackpressure.kt](./src/main/kotlin/com/jjeanjacques/pokemoncenter/adapter/queue/backpressure/DBHealthyConnectionsBackpressure.kt)
 
-Check the number of connections in the database, if there are more than 30 connections, the application will wait.
+This backpressure implementation monitors the number of connections in the database. If there are more than 30
+connections the application will wait.
+
+- [DBHealthySessionsBackpressure](./src/main/kotlin/com/jjeanjacques/pokemoncenter/adapter/queue/backpressure/DBHealthySessionsBackpressure.kt)
+
+Check the number of active sessions in the database, if there are more than 100 sessions, the application will wait.
 
 ## Running local
 
+### Docker
+
+Run SQS and MySQL database using docker-compose:
+
+``` bash
+docker-compose build --no-cache && docker-compose up -d
 ```
+
+### Application
+
+``` bash
 -Dspring.profiles.active=local
 ```
 
